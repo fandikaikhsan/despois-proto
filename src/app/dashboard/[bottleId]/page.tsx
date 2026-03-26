@@ -60,7 +60,7 @@ export default function BottleDetailPage() {
   // Generate QR code for the serial number
   useEffect(() => {
     if (!bottle) return
-    const verifyUrl = `https://despois.co/verify?serial=${bottle.serialNumber}`
+    const verifyUrl = `https://despois-proto.fandika.space/verified?serial=${bottle.serialNumber}`
     QRCode.toDataURL(verifyUrl, {
       width: 256,
       margin: 2,

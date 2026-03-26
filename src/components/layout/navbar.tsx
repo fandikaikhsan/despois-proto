@@ -34,6 +34,12 @@ export function Navbar() {
             >
               WAITLIST
             </Link>
+            <Link href="/order-usecase" className="text-sm tracking-wide transition-colors" style={{ color: '#A0A0A0' }}
+              onMouseEnter={e => (e.currentTarget.style.color = '#FFD700')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#A0A0A0')}
+            >
+              EXPERIENCE
+            </Link>
           </div>
 
           {/* CTA + mobile toggle */}
@@ -77,6 +83,7 @@ export function Navbar() {
           <div className="container-custom py-4 space-y-4">
             <Link href="/drops" className="block text-sm" style={{ color: '#F5F5F5' }} onClick={() => setMobileMenuOpen(false)}>DROPS</Link>
             <Link href="/#waitlist-section" className="block text-sm" style={{ color: '#F5F5F5' }} onClick={() => setMobileMenuOpen(false)}>WAITLIST</Link>
+            <Link href="/order-usecase" className="block text-sm" style={{ color: '#F5F5F5' }} onClick={() => setMobileMenuOpen(false)}>EXPERIENCE</Link>
             {isAuthenticated && (
               <Link href="/dashboard" className="block text-sm" style={{ color: '#FFD700' }} onClick={() => setMobileMenuOpen(false)}>MY DASHBOARD</Link>
             )}
