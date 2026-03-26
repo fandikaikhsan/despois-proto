@@ -75,7 +75,14 @@ export default function DashboardPage() {
               if (!album) return null
 
               return (
-                <div key={bottle.id} className="group" style={{ border: '1px solid #2A2A2A', padding: '1.5rem' }}>
+                <Link
+                  key={bottle.id}
+                  href={`/dashboard/${bottle.id}`}
+                  className="group block"
+                  style={{ border: '1px solid #2A2A2A', padding: '1.5rem', transition: 'border-color 0.2s' }}
+                  onMouseEnter={e => (e.currentTarget.style.borderColor = '#FFD700')}
+                  onMouseLeave={e => (e.currentTarget.style.borderColor = '#2A2A2A')}
+                >
                   <div className="relative aspect-square mb-4 overflow-hidden" style={{ backgroundColor: '#141414' }}>
                     <Image
                       src={album.coverImageUrl}
@@ -83,7 +90,6 @@ export default function DashboardPage() {
                       fill
                       className="object-cover transition duration-500 group-hover:scale-105"
                     />
-                    {/* Claimed overlay */}
                     <div className="absolute inset-0 flex items-end">
                       <div className="w-full p-3" style={{ background: 'linear-gradient(to top, rgba(10,10,10,0.9), transparent)' }}>
                         <p className="text-xs font-medium" style={{ color: '#FFD700', fontFamily: 'var(--font-jetbrains)' }}>
@@ -113,18 +119,9 @@ export default function DashboardPage() {
                           Claimed {new Date(bottle.claimedAt!).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                         </span>
                       </div>
-                      <Link
-                        href={`/drops/${album.slug}`}
-                        className="text-xs transition-colors"
-                        style={{ color: '#6B7280' }}
-                        onMouseEnter={e => (e.currentTarget.style.color = '#FFD700')}
-                        onMouseLeave={e => (e.currentTarget.style.color = '#6B7280')}
-                      >
-                        View drop →
-                      </Link>
+                      <span className="text-xs" style={{ color: '#6B7280' }}>View →</span>
                     </div>
 
-                    {/* Unlockables count */}
                     <div
                       className="mt-4 pt-4 text-sm"
                       style={{ borderTop: '1px solid #2A2A2A', color: '#6B7280' }}
@@ -132,7 +129,7 @@ export default function DashboardPage() {
                       {album.unlockables.length} exclusive tracks unlocked
                     </div>
                   </div>
-                </div>
+                </Link>
               )
             })}
           </div>
